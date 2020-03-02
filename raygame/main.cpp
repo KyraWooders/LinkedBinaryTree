@@ -10,6 +10,7 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "TreeNode.h"
 
 int main()
 {
@@ -23,6 +24,8 @@ int main()
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
 
+	TreeNode node(7);
+
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
@@ -35,9 +38,10 @@ int main()
 		//----------------------------------------------------------------------------------
 		BeginDrawing();
 
-		ClearBackground(RAYWHITE);
+		ClearBackground(PINK);
 
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+		
+		node.draw(190, 200, true);
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------
