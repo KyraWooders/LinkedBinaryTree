@@ -11,20 +11,34 @@
 
 #include "raylib.h"
 #include "TreeNode.h"
+#include "BinaryTree.h"
 
 int main()
 {
 	// Initialization
 	//--------------------------------------------------------------------------------------
-	int screenWidth = 800;
-	int screenHeight = 450;
+	int screenWidth = 1900;
+	int screenHeight = 1060;
 
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
 	SetTargetFPS(60);
+
+
 	//--------------------------------------------------------------------------------------
 
-	TreeNode node(7);
+	/*TreeNode node(7);*/
+	BinaryTree tree;
+	tree.insert(8);
+	tree.insert(5);
+	tree.insert(10);
+	tree.insert(17);
+	tree.insert(7);
+	tree.insert(12);
+	tree.insert(14);
+
+	/*TreeNode* selected;
+	selected = tree.find(12);*/
 
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -40,8 +54,9 @@ int main()
 
 		ClearBackground(PINK);
 
-		
-		node.draw(190, 200, true);
+		tree.draw();
+
+		//node.draw(190, 200, true);
 
 		EndDrawing();
 		//----------------------------------------------------------------------------------
