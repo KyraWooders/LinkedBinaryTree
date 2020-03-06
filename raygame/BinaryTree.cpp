@@ -81,48 +81,64 @@ void BinaryTree::insert(int a_nValue)
 void BinaryTree::remove(int a_nValue)
 {
 	//Find the value in the tree, obtaining a pointer to the node and its parent
-		//Return if node is not found
-	//If the current node has a right branch
-		//Find the minimum value in the right branch by iterating
-			//down the left branch of the current node's right child
-			//until there are no more left branch nodes and keep track
-			//of the minimum node's parent
-		//Copy the value from this minimum node to the current node
-		//If we are deleting the parent's left node
-			//Set the left child of the parent to the right child of the minimum node
-		//If we are deleting the parent's right node
-			//Set the right child of the parent to the right child of the minimum node
-	//If the current no has no right branch
-		//If we are deleting the parent's left child
-			//Set the left child of the parent to the left child of the current node
-		//If we are deleting the parent's right child
-			//Set the right child of the parent to the left child of the current node
-		//If we are deleting the root
-			//The root becomes the left child of the current node
-
 	TreeNode* currentNode = m_pRoot;
 	TreeNode* parentNode = currentNode;
 
-	if (currentNode->hasRight())
+	//Return if node is not found
+	if (findNode(a_nValue, &currentNode, &parentNode) == true)
 	{
+		//If the current node has a right branch
+		if (currentNode->hasRight())
+		{
+			//Find the minimum value in the right branch by iterating
 
+
+				//down the left branch of the current node's right child
+				//until there are no more left branch nodes and keep track
+				//of the minimum node's parent
+
+			//Copy the value from this minimum node to the current node
+
+
+			//If we are deleting the parent's left node
+			if ()
+			{
+				//Set the left child of the parent to the right child of the minimum node
+
+			}
+
+			//If we are deleting the parent's right node
+			if ()
+			{
+				//Set the right child of the parent to the right child of the minimum node
+
+			}
+		}
+
+		//If the current no has no right branch
+		if (!currentNode->hasRight())
+		{
+			//If we are deleting the parent's left child
+			if ()
+			{
+				//Set the left child of the parent to the left child of the current node
+
+			}
+			//If we are deleting the parent's right child
+			if ()
+			{
+				//Set the right child of the parent to the left child of the current node
+
+			}
+			//If we are deleting the root
+			if ()
+			{
+				//The root becomes the left child of the current node
+
+			}
+		}
 	}
-
-	if (!currentNode->hasRight())
-	{
-		if ()
-		{
-
-		}
-		if ()
-		{
-
-		}
-		if ()
-		{
-
-		}
-	}
+	
 }
 
 TreeNode * BinaryTree::find(int a_nValue)
