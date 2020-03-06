@@ -4,7 +4,7 @@
 
 BinaryTree::BinaryTree()
 {
-	m_pRoot = new TreeNode();
+	m_pRoot = nullptr;
 }
 
 BinaryTree::~BinaryTree()
@@ -57,7 +57,7 @@ void BinaryTree::insert(int a_nValue)
 			if (a_nValue == currentNode->getData())
 			{
 				//exit the loop
-				break;
+				return;
 			}
 		}
 
@@ -107,6 +107,10 @@ void BinaryTree::remove(int a_nValue)
 
 TreeNode * BinaryTree::find(int a_nValue)
 {
+	TreeNode* currentNode = nullptr;
+	TreeNode* parentNode = currentNode;
+
+	findNode(a_nValue, &currentNode, &parentNode);
 
 	return nullptr;
 }
@@ -119,25 +123,40 @@ void BinaryTree::draw(TreeNode * selected)
 
 bool BinaryTree::findNode(int a_nSearchValue, TreeNode ** ppOutNode, TreeNode ** ppOutParent)
 {
-	//TreeNode* currentNode = m_pRoot;
+	//Set the current node to the root
+	TreeNode* currentNode = m_pRoot;
+	TreeNode* parentNode = currentNode;
 
-	////While the current node is not null
-	//while (currentNode != nullptr)
-	//{
-	//	if ()
-	//	{
+	//While the current node is not null
+	while (currentNode != nullptr)
+	{
+		//If the search value equals the current node value,
+		if (a_nSearchValue == currentNode->getData())
+		{
+			//Return the current node and its parent
+			*ppOutNode = currentNode;
+			*ppOutParent = parentNode;
+			return true;
+		}
+		else 
+		{
+			//If the search value is less than the current node
+			if (a_nSearchValue < currentNode->getData())
+			{
+				//Set the current node to the left child
+				parentNode = currentNode;
+				currentNode = currentNode->getLeft();
+			}
+			else
+			{
+				//Set the current node to the right child
+				parentNode = currentNode;
+				currentNode = currentNode->getRight();
+			}
+		}
+	}
 
-	//	}
-	//	if ()
-	//	{
-
-	//	}
-	//}
-
-	//if ()
-	//{
-
-	//}
+	//If the loop exits, then a match was not found, so return false
 	return false;
 }
 
@@ -161,9 +180,9 @@ void BinaryTree::draw(TreeNode * pNode, int x, int y, int horizontalSpacing, Tre
 		if (pNode->hasRight())
 		{
 			//Draw line to right node
-			DrawLine(x, y, x - horizontalSpacing, y + 80, BLUE);
+			DrawLine(x, y, x + horizontalSpacing, y + 80, BLUE);
 			//Draw right node
-			draw(pNode->getRight(), x - horizontalSpacing, y + 80, horizontalSpacing, selected);
+			draw(pNode->getRight(), x + horizontalSpacing, y + 80, horizontalSpacing, selected);
 		}
 		//Draw current node
 		pNode->draw(x, y, (selected == pNode));

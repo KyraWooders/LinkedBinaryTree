@@ -37,8 +37,8 @@ int main()
 	tree.insert(12);
 	tree.insert(14);
 
-	/*TreeNode* selected;
-	selected = tree.find(12);*/
+	TreeNode* selected;
+	selected = tree.find(12);
 
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -54,7 +54,7 @@ int main()
 
 		ClearBackground(PINK);
 
-		tree.draw();
+		tree.draw(selected);
 
 		//node.draw(190, 200, true);
 
