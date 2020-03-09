@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "raylib.h"
 
+
+//Draws the node
 void TreeNode::draw(int x, int y, bool selected)
 {
 	static char buffer[10];

@@ -91,27 +91,51 @@ void BinaryTree::remove(int a_nValue)
 		if (currentNode->hasRight())
 		{
 			//Find the minimum value in the right branch by iterating
+			TreeNode* iteratorNode = currentNode->getRight();
+			TreeNode* iteratorParent = parentNode;
 
-
+				
+		    //until there are no more left branch nodes and keep track of the minimum node's parent
+			while (iteratorNode->getLeft() != nullptr)
+			{
 				//down the left branch of the current node's right child
-				//until there are no more left branch nodes and keep track
-				//of the minimum node's parent
+				iteratorParent = iteratorNode;
+				iteratorNode = iteratorNode->getLeft();
+			}
 
 			//Copy the value from this minimum node to the current node
-
+			currentNode->setData(iteratorNode->getData());
 
 			//If we are deleting the parent's left node
-			if ()
+			if (iteratorNode == iteratorParent->getLeft())
 			{
 				//Set the left child of the parent to the right child of the minimum node
-
+				if (iteratorNode->hasRight())
+				{
+					iteratorParent->setRight(iteratorNode->getRight());
+					delete iteratorNode;
+				}
+				else
+				{
+					delete iteratorNode;
+					iteratorParent->setLeft(nullptr);
+				}
 			}
 
 			//If we are deleting the parent's right node
-			if ()
+			if (iteratorNode == iteratorParent->getRight())
 			{
 				//Set the right child of the parent to the right child of the minimum node
-
+				if (iteratorNode->hasRight())
+				{
+					iteratorParent->setRight(iteratorNode->getRight());
+					delete iteratorNode;
+				}
+				else
+				{
+					delete iteratorNode;
+					iteratorParent->setRight(nullptr);
+				}
 			}
 		}
 
@@ -119,22 +143,36 @@ void BinaryTree::remove(int a_nValue)
 		if (!currentNode->hasRight())
 		{
 			//If we are deleting the parent's left child
-			if ()
+			if (currentNode == parentNode->getLeft())
 			{
 				//Set the left child of the parent to the left child of the current node
+				if (currentNode->hasLeft())
+				{
 
+				}
+				else
+				{
+
+				}
 			}
 			//If we are deleting the parent's right child
-			if ()
+			if (currentNode == parentNode->getRight())
 			{
 				//Set the right child of the parent to the left child of the current node
+				if (currentNode->hasLeft())
+				{
 
+				}
+				else
+				{
+
+				}
 			}
 			//If we are deleting the root
-			if ()
+			if (currentNode == m_pRoot)
 			{
 				//The root becomes the left child of the current node
-
+				
 			}
 		}
 	}
