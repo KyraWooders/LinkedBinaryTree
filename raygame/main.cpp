@@ -29,6 +29,8 @@ int main()
 
 	/*TreeNode node(7);*/
 	BinaryTree tree;
+
+	//make nodes
 	tree.insert(8);
 	tree.insert(5);
 	tree.insert(10);
@@ -36,9 +38,17 @@ int main()
 	tree.insert(7);
 	tree.insert(12);
 	tree.insert(14);
+	tree.insert(1);
+	tree.insert(6);
+	tree.insert(18);
+	tree.insert(9);
 
+	//find a node
 	TreeNode* selected;
-	selected = tree.find(10);
+	selected = tree.find(17);
+
+	//remove a node
+	tree.remove(12);
 
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -58,7 +68,7 @@ int main()
 
 		//node.draw(190, 200, true);
 
-		EndDrawing();
+		EndDrawing();		
 		//----------------------------------------------------------------------------------
 	}
 

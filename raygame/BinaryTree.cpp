@@ -92,7 +92,7 @@ void BinaryTree::remove(int a_nValue)
 		{
 			//Find the minimum value in the right branch by iterating
 			TreeNode* iteratorNode = currentNode->getRight();
-			TreeNode* iteratorParent = parentNode;
+			TreeNode* iteratorParent = currentNode;
 
 				
 		    //until there are no more left branch nodes and keep track of the minimum node's parent
@@ -110,69 +110,42 @@ void BinaryTree::remove(int a_nValue)
 			if (iteratorNode == iteratorParent->getLeft())
 			{
 				//Set the left child of the parent to the right child of the minimum node
-				if (iteratorNode->hasRight())
-				{
-					iteratorParent->setRight(iteratorNode->getRight());
-					delete iteratorNode;
-				}
-				else
-				{
-					delete iteratorNode;
-					iteratorParent->setLeft(nullptr);
-				}
+				iteratorParent->setLeft(iteratorNode->getRight());
+				delete iteratorNode;				
 			}
 
 			//If we are deleting the parent's right node
 			if (iteratorNode == iteratorParent->getRight())
 			{
 				//Set the right child of the parent to the right child of the minimum node
-				if (iteratorNode->hasRight())
-				{
-					iteratorParent->setRight(iteratorNode->getRight());
-					delete iteratorNode;
-				}
-				else
-				{
-					delete iteratorNode;
-					iteratorParent->setRight(nullptr);
-				}
+				iteratorParent->setRight(iteratorNode->getRight());
+				delete iteratorNode;				
 			}
 		}
-
 		//If the current no has no right branch
-		if (!currentNode->hasRight())
+		else
 		{
 			//If we are deleting the parent's left child
 			if (currentNode == parentNode->getLeft())
 			{
 				//Set the left child of the parent to the left child of the current node
-				if (currentNode->hasLeft())
-				{
-
-				}
-				else
-				{
-
-				}
+				parentNode->setLeft(currentNode->getLeft());
+				delete currentNode;				
 			}
 			//If we are deleting the parent's right child
 			if (currentNode == parentNode->getRight())
 			{
 				//Set the right child of the parent to the left child of the current node
-				if (currentNode->hasLeft())
-				{
-
-				}
-				else
-				{
-
-				}
+				parentNode->setRight(currentNode->getLeft());
+				delete currentNode;				
 			}
 			//If we are deleting the root
 			if (currentNode == m_pRoot)
 			{
 				//The root becomes the left child of the current node
-				
+				m_pRoot = currentNode->getLeft();
+				m_pRoot->setLeft(currentNode->getLeft());
+				delete currentNode->getLeft();
 			}
 		}
 	}
