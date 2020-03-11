@@ -4,6 +4,7 @@
 
 BinaryTree::BinaryTree()
 {
+	//start with no root
 	m_pRoot = nullptr;
 }
 
@@ -13,8 +14,10 @@ BinaryTree::~BinaryTree()
 
 bool BinaryTree::isEmpty() const
 {
+	//if the root is empty
 	if (m_pRoot == nullptr)
 	{
+		//isEmpty is true
 		return true;
 	}
 	return false;
@@ -154,11 +157,14 @@ void BinaryTree::remove(int a_nValue)
 
 TreeNode * BinaryTree::find(int a_nValue)
 {
+	//set current node as null and set the parent node to the current node
 	TreeNode* currentNode = nullptr;
 	TreeNode* parentNode = currentNode;
 
+	//use the findNode function to find the valve
 	findNode(a_nValue, &currentNode, &parentNode);
 
+	//retrun it to the current node
 	return currentNode;
 }
 
