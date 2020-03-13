@@ -8,7 +8,79 @@
 
 - **Statement**: 
 
+- **Output**: The program will show a binary tree with the tree inserted 8, 5, 10, 17, 7, 12, 14, 1, 6, 18, and 9, have the 17 node selected, and the 12 node removed.
+
 ## II. Design Documentation
+
+### Type 'TreeNode'
+
+
+#### Method TreeNode()
+Type: Constructor
+
+Description:
+
+#### Method hasLeft()
+Type: Bool
+
+Description:
+
+#### Method hasRight()
+Type: Bool
+
+Description:
+
+#### Method getData()
+Type: int
+
+Description:
+
+#### Method getLeft()
+Type: TreeNode*
+
+Description:
+
+#### Method getRight()
+Type: TreeNode*
+
+Description:
+
+#### Method setData()
+Type: Void
+
+Description:
+
+#### Method setLeft()
+Type: Void
+
+Description:
+
+#### Method setRight()
+Type: Void
+
+Description:
+
+#### Method draw()
+Type: Void
+
+Description:
+
+#### Field m_value
+Type: int
+
+Description:
+
+#### Field m_left
+Type: TreeNode*
+
+Description:
+
+#### Field m_right
+Type: TreeNode*
+
+Description:
+
+### Type 'BinaryTree'
 
 
 
